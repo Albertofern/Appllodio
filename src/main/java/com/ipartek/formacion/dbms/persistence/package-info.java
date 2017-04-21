@@ -1,5 +1,5 @@
 /**
- * 
+ * Este paquete contendrá la capa de persistencia del proyecto.
  */
 /**
  * @author Alberto
