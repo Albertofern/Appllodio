@@ -22,7 +22,6 @@ public class Barrio implements Comparable<Barrio>, Serializable {
 
 	private int codigo;
 	private String nombre;
-	private String documento;
 	private Map<Long, Restaurante> restaurantes;
 	private Map<Long, Fiesta> fiestas;
 
@@ -36,7 +35,6 @@ public class Barrio implements Comparable<Barrio>, Serializable {
 		this.nombre = "";
 		restaurantes = new HashMap<Long, Restaurante>();
 		fiestas = new HashMap<Long, Fiesta>();
-		this.documento = "";
 	}
 
 	/**
@@ -139,28 +137,13 @@ public class Barrio implements Comparable<Barrio>, Serializable {
 		return this.nombre.compareToIgnoreCase(o.getNombre());
 	}
 
-	
-
-	/**
-	 * @return the documento
-	 */
-	public String getDocumento() {
-		return documento;
-	}
-
-	/**
-	 * @param documento the documento to set
-	 */
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Barrio [codigo=" + codigo + ", nombre=" + nombre + ", documento=" + documento + ", restaurantes="
+		return "Barrio [codigo=" + codigo + ", nombre=" + nombre + ", restaurantes="
 				+ restaurantes + ", fiestas=" + fiestas + "]";
 	}
 

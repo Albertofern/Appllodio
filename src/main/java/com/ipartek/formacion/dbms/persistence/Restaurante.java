@@ -23,6 +23,7 @@ public class Restaurante implements Comparable<Restaurante>, Serializable {
 	private String telefono;
 	private String numero;
 	private Barrio barrio;
+	private String documento;
 
 	public Restaurante() {
 		super();
@@ -32,6 +33,7 @@ public class Restaurante implements Comparable<Restaurante>, Serializable {
 		this.numero = "S/N";
 		this.telefono = "";
 		this.barrio = null;
+		this.documento ="";
 
 	}
 
@@ -162,15 +164,28 @@ public class Restaurante implements Comparable<Restaurante>, Serializable {
 		this.barrio = barrio;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+
+	/**
+	 * @return the documento
+	 */
+	public String getDocumento() {
+		return documento;
+	}
+
+	/**
+	 * @param documento the documento to set
+	 */
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Restaurante [codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono="
-				+ telefono + ", numero=" + numero + ", barrio=" + barrio + "]";
+				+ telefono + ", numero=" + numero + ", barrio=" + barrio + ", documento=" + documento + "]";
 	}
 
 	@Override
