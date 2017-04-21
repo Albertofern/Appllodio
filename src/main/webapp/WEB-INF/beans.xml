@@ -20,5 +20,18 @@
 		<property name="username" value="${mysql.user}" />
 		<property name="password" value="${mysql.pass}" />
 	</bean>
+	
+	<bean id="barrioDaoImp" class="com.ipartek.formacion.dbms.dao.BarrioDAOImp">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
+	<bean id="restauranteDaoImp" class="com.ipartek.formacion.dbms.dao.RestauranteDAOImp">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
+	<bean id="fiestaDaoImp" class="com.ipartek.formacion.dbms.dao.FiestaDAOImp">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
+	<bean id="contactoDaoImp" class="com.ipartek.formacion.dbms.dao.ContactoDAOImp">
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
 
 </beans>
