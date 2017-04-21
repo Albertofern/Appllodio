@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,7 @@ public class RestauranteDAOImp implements RestauranteDAO {
 	@Qualifier("mysqlDataSource")
 	private DataSource dataSource;
 	
+	private Logger logger = LoggerFactory.getLogger(RestauranteDAOImp.class);
 	
 
 	@Autowired
@@ -37,7 +40,7 @@ public class RestauranteDAOImp implements RestauranteDAO {
 
 	@Override
 	public Restaurante create(Restaurante restau) {
-		// TODO Auto-generated method stub
+		logger.info("METHOD DAO: getAll() -- PARAMS: " + restau.toString());
 		return null;
 	}
 

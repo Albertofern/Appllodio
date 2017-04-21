@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -25,6 +27,8 @@ public class BarrioDAOImp implements BarrioDAO {
 	@Autowired
 	@Qualifier("mysqlDataSource")
 	private DataSource dataSource;
+	
+	private Logger logger = LoggerFactory.getLogger(BarrioDAOImp.class);
 
 	@Autowired
 	@Qualifier("mysqlDataSource")
@@ -35,7 +39,7 @@ public class BarrioDAOImp implements BarrioDAO {
 
 	@Override
 	public Barrio create(Barrio barrio) {
-		// TODO Auto-generated method stub
+		logger.info("METHOD DAO: getAll() -- PARAMS: " + barrio.toString());
 		return null;
 	}
 
