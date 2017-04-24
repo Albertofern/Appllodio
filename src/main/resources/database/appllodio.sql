@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-04-2017 a las 23:04:51
+-- Tiempo de generación: 24-04-2017 a las 21:17:16
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -20,145 +20,6 @@ SET time_zone = "+00:00";
 -- Base de datos: `appllodio`
 --
 
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barrioCreate` (IN `pnombre` VARCHAR(50), OUT `pcodigo` INT)  BEGIN
-
-
-
-INSERT	INTO barrio(nombre)
-VALUES(LOWER(pnombre));
-SET pcodigo = LAST_INSERT_ID();
-
-
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barrioDelete` (IN `pcodigo` INT)  NO SQL
-BEGIN
-
-DELETE FROM barrio WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barriogetAll` ()  NO SQL
-BEGIN
-
-SELECT b.codigo, b.nombre  FROM barrio as b;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barriogetById` (IN `pcodigo` INT)  NO SQL
-BEGIN
-
-	SELECT b.codigo, b.nombre
-	FROM barrio as b 
-	WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barriogetByNombre` (IN `pnombre` VARCHAR(50))  NO SQL
-BEGIN
-
-    SELECT `codigo`, `nombre`
-    FROM `barrio`
-    WHERE nombre = pnombre;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `barrioUpdate` (IN `pcodigo` INT, IN `pnombre` VARCHAR(50))  NO SQL
-BEGIN
-
-UPDATE barrio 
-SET nombre = LOWER(pnombre)
-WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `contactoCreate` (IN `pnombre` VARCHAR(50), IN `pambito` VARCHAR(50), IN `ptelefono` VARCHAR(9), OUT `pcodigo` INT)  BEGIN
-
-INSERT	INTO contacto(nombre,ambito,telefono)
-VALUES(LOWER(pnombre),LOWER(pambito),ptelefono);
-SET pcodigo = LAST_INSERT_ID();
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `contactoDelete` (IN `pcodigo` INT)  NO SQL
-BEGIN
-
-DELETE FROM contacto WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `contactogetAll` ()  NO SQL
-BEGIN
-
-	SELECT `codigo`, `nombre`, `ambito`, `telefono`, `activo`
-	FROM `contacto`;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `contactogetById` (IN `pcodigo` INT)  NO SQL
-BEGIN
-
-    SELECT `codigo` as codigo, `nombre`,  `ambito`, `telefono`, `activo` 
-    FROM `contacto`
-	WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `contactoUpdate` (IN `pcodigo` INT, IN `pnombre` VARCHAR(50), IN `pambito` VARCHAR(50), IN `ptelefono` VARCHAR(50))  NO SQL
-BEGIN
-
-UPDATE contacto 
-SET nombre = LOWER(pnombre),ambito=LOWER(pambito),telefono=ptelefono
-WHERE codigo = pcodigo;
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `fiestaCreate` (IN `pnombre` VARCHAR(50), IN `pdescripcion` TEXT, IN `pfecha` DATE, OUT `pcodigo` INT)  BEGIN
-
-INSERT	INTO fiesta(nombre,descripcion,fecha)
-VALUES(LOWER(pnombre),LOWER(pdescripcion),pfecha);
-SET pcodigo = LAST_INSERT_ID();
-
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `fiestaDelete` (IN `pcodigo` INT)  NO SQL
-BEGIN
-
-DELETE FROM fiesta WHERE codigo = pcodigo;
-
-END$$
-
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `barrio`
---
-
-CREATE TABLE `barrio` (
-  `codigo` int(11) NOT NULL,
-  `nombre` varchar(50) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `barrio`
---
-
-INSERT INTO `barrio` (`codigo`, `nombre`) VALUES
-(1, 'ugarte'),
-(2, 'areta'),
-(3, 'latiorro'),
-(4, 'landaluce'),
-(5, 'gardea'),
-(6, 'larraño'),
-(7, 'zona centro');
-
 -- --------------------------------------------------------
 
 --
@@ -172,56 +33,28 @@ CREATE TABLE `fiesta` (
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `restaurante`
+-- Volcado de datos para la tabla `fiesta`
 --
 
-CREATE TABLE `restaurante` (
-  `codigo` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `direccion` varchar(50) DEFAULT NULL,
-  `numero` varchar(3) DEFAULT 'S/N',
-  `telefono` varchar(9) DEFAULT NULL,
-  `documento` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `restaurante`
---
-
-INSERT INTO `restaurante` (`codigo`, `nombre`, `direccion`, `numero`, `telefono`, `documento`) VALUES
-(1, 'balintxareketa', 'malkuartu bidea', '1', '946724350', ''),
-(2, 'palacio anuncibai', 'vitoria', '', '946726188', ''),
-(3, 'telepizza', 'zumalacarregui', '15', '944030456', ''),
-(4, 'Karrika', 'poligono industrialdea', '4', '946728207', ''),
-(5, 'batzoki llodio', 'plaza alberto acero', '12', '946034000', ''),
-(6, 'paraiso chino', 'virgen del carmen', '31', '946726517', ''),
-(7, 'capucci katua', 'zubiko kurajo', '7', '946559953', ''),
-(8, 'el tunel', 'vitoria', '5', '946720558', ''),
-(9, 'tolo', 'virgen del carmen', '9', '672235065', ''),
-(10, 'txanxiku', 'zubiaur', '3', '946722774', ''),
-(11, 'utzine', 'lamuza', '23', '946721232', ''),
-(12, 'centro gallego', 'ruperto urquijo', '1', '946726009', ''),
-(13, 'txakoli beldui', 'caserio beldio', 'S/N', '685757648', ''),
-(14, 'andoniren', 'tres cruces', '25', '946721495', ''),
-(15, 'biribil', 'zumalakarregi ', '39', '946728000', ''),
-(16, 'dorrea', 'ugarte', '16', '944048878', ''),
-(17, 'larrea', 'doctor fleming', '3', '946725013', ''),
-(18, 'ugarte', 'ugarte', '11', '946725699', ''),
-(19, 'mu lian', 'tres cruces', '5', '946728424', ''),
-(20, 'laurak', 'tres cruces', '17', '946722725', '');
+INSERT INTO `fiesta` (`codigo`, `nombre`, `descripcion`, `fecha`) VALUES
+(1, 'Feria de San Blas', 'Sábado anterior o coincidente con el 3 de febrero. Importante Feria que gira en torno al caserío especialmente relacionada con la matanza del cerdo. Exposición de productos del caserío y de artesanía. Concurso gastronómico de patas de cerdo.', '2017-02-03'),
+(2, 'Viernes de Dolores', 'De gran tradición para los llodianos, se realiza el viernes anterior al inicio de la Semana Santa. Importante Feria Exposición de ganado vacuno, equino y ovino. Importante prueba de arrastre de piedra con bueyes. Se puede considerar una de las fiestas más importantes de la comarca.', '2017-03-23'),
+(3, 'Santa Agueda', 'Se celebra el segundo día de Pascua Resurrección en la ermita de María Magdalena en Larraño, al pie de Luja.', '2017-04-18'),
+(4, 'San Prudencio', 'Patrono de Alava, el día 28 de abril. Tamborrada y Concurso de Caracoles.', '2017-04-28'),
+(5, 'Santa Cruz', '3 de mayo en el barrio de Gardea', '2017-05-03'),
+(6, 'Santa Lucía', 'El segundo día de Pascua de Pentecostés o siete semanas después de Resurrección. Importante romería que se celebra en la campa existente junto a la ermita en el entorno de Santa María del Yermo.', '2017-06-03'),
+(7, 'San Antonio', 'El 13 de junio. Su ermita está dedicada también a la advocación de Santa Apolonia.', '2017-06-13'),
+(8, 'San Juan', 'El 24 de junio en el barrio de Larrazabal.', '2017-06-24'),
+(9, 'Santa Ana', 'El 26 de julio, en el barrio de Areta.', '2017-07-26'),
+(10, 'San Ignacio', 'El 31 de julio, en el barrio de Ugarte', '2017-07-31'),
+(11, 'San Roke', 'Patrono del Valle de Llodio. Las fiestas en su honor comienzan el 15 de agosto, la Asunción, y se extienden hasta el último domingo del mes, día en el que se celebra, desde 1599, la comida de hermandad de los cofrades de San Roke. La víspera se celebra la popular fiesta llamada “Día de las morcillas”.', '2017-08-15'),
+(12, 'San Bartolomé', 'En la ermita del santo en Larra, el 24 de agosto.', '2017-08-24'),
+(13, 'Latiorroko Jaiak', 'Fiestas de este populoso barrio de Llodio, a mediados de septiembre.', '2017-09-14');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `barrio`
---
-ALTER TABLE `barrio`
-  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Indices de la tabla `fiesta`
@@ -234,15 +67,10 @@ ALTER TABLE `fiesta`
 --
 
 --
--- AUTO_INCREMENT de la tabla `barrio`
---
-ALTER TABLE `barrio`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
 -- AUTO_INCREMENT de la tabla `fiesta`
 --
 ALTER TABLE `fiesta`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
