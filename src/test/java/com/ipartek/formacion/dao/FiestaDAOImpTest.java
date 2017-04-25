@@ -17,9 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ipartek.formacion.dbms.dao.interfaces.FiestaDAO;
-import com.ipartek.formacion.dbms.persistence.Barrio;
 import com.ipartek.formacion.dbms.persistence.Fiesta;
-import com.ipartek.formacion.dbms.persistence.Restaurante;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

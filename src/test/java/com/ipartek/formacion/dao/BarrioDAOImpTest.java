@@ -11,23 +11,17 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 import com.ipartek.formacion.dbms.dao.interfaces.BarrioDAO;
 import com.ipartek.formacion.dbms.persistence.Barrio;
-import com.ipartek.formacion.dbms.persistence.Fiesta;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 public class BarrioDAOImpTest {
-
-	private Logger logger = LoggerFactory.getLogger(BarrioDAOImpTest.class);
 	
 	@Autowired
 	BarrioDAO bS;
