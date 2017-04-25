@@ -55,7 +55,6 @@ public class FiestaDAOImp implements FiestaDAO {
 				.addValue("pnombre", fiesta.getNombre())
 				.addValue("pdescripcion", fiesta.getDescripcion())
 				.addValue("pfecha", fiesta.getFecha());	
-		logger.info("codigo barrio:"+fiesta.getBarrio().getCodigo());
 		logger.info("METHOD DAO: getAll() -- PARAMS: " + fiesta.toString());
 		Map<String, Object> out = jdbcCall.execute(in);
 		fiesta.setCodigo((Integer) out.get("pcodigo"));
