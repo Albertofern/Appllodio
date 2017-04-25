@@ -17,6 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ipartek.formacion.dbms.dao.interfaces.FiestaDAO;
+import com.ipartek.formacion.dbms.persistence.Barrio;
 import com.ipartek.formacion.dbms.persistence.Fiesta;
 
 
@@ -88,9 +89,15 @@ public class FiestaDAOImpTest {
 	
 
 	@Test
-	@Ignore
 	public void testGetById() {
-		fail("Not yet implemented");
+		for(int i=0; i<codigos.length; i++){
+			Fiesta fies = fS.getById(codigos[i]);
+			assertNotNull("La Fiesta tiene que existir. La Fiesta con codigo " 
+						+ codigos[i] + " esta en BBDDs", fies);
+			assertEquals("El codigo de la fiesta no coincide. El codigo enviado es:" + codigos[i] 
+						+ " y el recibido es:" + fies.getCodigo(),
+						codigos[i], fies.getCodigo());
+		}
 	}
 
 	@Test
