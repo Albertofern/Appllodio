@@ -96,7 +96,6 @@ public class RestauranteDAOImpTest {
 	}
 
 	@Test
-	@Ignore
 	public void testGetById() {
 		List<Restaurante> restaurantes = rS.getAll();
 		int size = 20;

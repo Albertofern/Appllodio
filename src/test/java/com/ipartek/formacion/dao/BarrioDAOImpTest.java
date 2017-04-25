@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ipartek.formacion.dbms.dao.interfaces.BarrioDAO;
 import com.ipartek.formacion.dbms.persistence.Barrio;
+import com.ipartek.formacion.dbms.persistence.Fiesta;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -95,14 +96,17 @@ public class BarrioDAOImpTest {
 
 	@Test
 	public void testGetById() {
-		for(int i=0; i<codigos.length; i++){
+		/*for(int i=0; i<codigos.length; i++){
 			Barrio barri = bS.getById(codigos[i]);
 			assertNotNull("El barrio tiene que existir. El barrio con codigo " 
 						+ codigos[i] + " esta en BBDDs", barri);
 			assertEquals("El codigo del alumno no coincide. El codigo enviado es:" + codigos[i] 
 						+ " y el recibido es:" + barri.getCodigo(),
 						codigos[i], barri.getCodigo());
-		}
+		}*/
+		List<Barrio> barrios = bS.getAll();
+		int size = 7;
+		assertEquals("numero de barrios es incorrecto",size , barrios.size());
 	}
 
 	@Test
