@@ -18,6 +18,7 @@
 	</listener>
 	
 		<!-- Spring Security Filter -->
+	<!--  
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>
@@ -28,8 +29,9 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+	-->
 		<!-- Filtro para Spring, para el encoding de caracteres a UTF-8 -->
+		
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>
