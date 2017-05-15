@@ -26,7 +26,7 @@ CREATE TABLE `barrio` (
   `codigo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,32 @@ LOCK TABLES `barrio` WRITE;
 /*!40000 ALTER TABLE `barrio` DISABLE KEYS */;
 INSERT INTO `barrio` VALUES (1,'ugarte'),(2,'areta'),(3,'latiorro'),(4,'landaluce'),(5,'gardea'),(6,'larraño'),(7,'zona centro');
 /*!40000 ALTER TABLE `barrio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contacto`
+--
+
+DROP TABLE IF EXISTS `contacto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contacto` (
+  `codigo` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `ambito` varchar(50) NOT NULL,
+  `telefono` varchar(9) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacto`
+--
+
+LOCK TABLES `contacto` WRITE;
+/*!40000 ALTER TABLE `contacto` DISABLE KEYS */;
+INSERT INTO `contacto` VALUES (1,'Ertzaintza','Emergencias','944063860'),(2,'Policía municipal','Emergencias','944034888'),(3,'Bomberos de Ayala','Emergencias','946726565'),(4,'Consultorio médico','Servicios médicos','946007480'),(5,'Cruz Roja','Servicios médicos','946726458'),(6,'Hospital de Santiago Apóstol','Servicios médicos','945007600'),(7,'Hospital de Txagorritxu','Servicios médicos','945007000'),(8,'Hospital de Leza','Servicios médicos','945006900'),(9,'Hospital Psiquiátrico de Álava','Servicios médicos','945006555'),(10,'Clínica Álava','Servicios médicos','945142100'),(11,'Policlínico San José','Servicios médicos','945140900'),(12,'DYA','Servicios médicos','945281020'),(13,'Urgencias médicas','Servicios médicos','945244444'),(14,'Asociación de Donantes de Sangre','Servicios médicos','945260977'),(15,'Banco de Sangre de Araba','Servicios médicos','945007627'),(16,'Acogida a la Vida','Servicios de apoyo social','945271619'),(17,'Alcohólicos Anónimos','Servicios de apoyo social','945250417'),(18,'Cáritas','Servicios de apoyo social','946721797'),(19,'Denuncias publicidad sexista','Servicios de apoyo social','900191010'),(20,'Drogodependencias','Servicios de apoyo social','902471818'),(21,'Información sobre el SIDA','Servicios de apoyo social','945257766'),(22,'Madres y padres separados','Servicios de apoyo social','945259831'),(23,'Maltrato infantil','Servicios de apoyo social','900202010'),(24,'Mujeres maltratadas','Servicios de apoyo social','945134444'),(25,'Prevención de la ludopatía','Servicios de apoyo social','945140468'),(26,'Proyecto Hombre','Servicios de apoyo social','945143720'),(27,'Sartu','Servicios de apoyo social','946727773'),(28,'Teléfono de la Esperanza','Servicios de apoyo social','945147014'),(29,'Teléfono Dorado','Servicios de apoyo social','900222223'),(30,'Aeropuerto de Foronda','Transportes','945163518'),(31,'Aeropuerto de Loiu','Transportes','944869301'),(32,'Renfe','Transportes','902240202'),(33,'Bizkaibus','Transportes','944484080'),(34,'Ayuntamiento de Laudio/Llodio','Administraciones públicas','944034800'),(35,'Diputación Foral de Álava','Administraciones públicas','945181818'),(36,'Diputación Foral de Bizkaia','Administraciones públicas','944208000'),(37,'Delegación de Hacienda','Administraciones públicas','946725483'),(38,'Gobierno Vasco','Administraciones públicas','945018000'),(39,'CEP Lamuza','Centros educativos','946720226'),(40,'CEP Latiorro','Centros educativos','946721874'),(41,'CEP Fabian Legorburu','Centros educativos','946722001'),(42,'Colegio La Milagrosa','Centros educativos','946720701'),(43,'Laudio Ikastola','Centros educativos','946726737'),(44,'Laudio Institutua Behekoa','Centros educativos','946720086'),(45,'Laudio Institutua Goikoa','Centros educativos','946721870'),(46,'Centro Municipal de Formación Profesional','Centros educativos','946720505'),(47,'CEPA Laudio','Centros educativos','946721734'),(48,'Haurreskola Matxintxu','Centros educativos','944049543'),(49,'Casa de Cultura','Otros','944034920'),(50,'Gazteleku','Otros','94 038583'),(51,'Oficina de Turismo','Otros','944034930'),(52,'Servicio de Aguas - Aqualia','Otros','911779121'),(53,'Archivo municipal','Otros','946726051'),(54,'Correos y Telégrafos','Otros','946720041'),(55,'Tanatorio Alto Nervión','Otros','946727750'),(56,'INEM','Otros','646720047'),(57,'Langai','Otros','901222901'),(58,'KZGunea','Otros','946728397');
+/*!40000 ALTER TABLE `contacto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -52,7 +78,7 @@ CREATE TABLE `fiesta` (
   `descripcion` text NOT NULL,
   `fecha` date DEFAULT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -613,4 +639,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-25 17:29:13
+-- Dump completed on 2017-05-15 15:36:34
